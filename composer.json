@@ -1,0 +1,22 @@
+{
+    "name": "riclep/spark-single-payment",
+    "description": "Take single payments in Laravel Spark such as 'pay-as-you-go' payments",
+    "keywords": ["laravel", "spark", "laravel spark", "payments", "stripe", "braintree"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Richard Le Poidevin",
+            "email": "ric@wearebwi.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"RicLeP\\SparkSinglePayment\\SparkSinglePaymentServiceProvider"
+			]
+		}
+	}
+}
