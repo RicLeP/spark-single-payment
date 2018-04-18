@@ -9,7 +9,7 @@
             "email": "ric@wearebwi.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
 	}
 }
