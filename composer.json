@@ -11,5 +11,10 @@
     ],
     "minimum-stability": "stable",
     "require": {
+	},
+	"autoload": {
+		"psr-4": {
+			"RicLeP\\SparkSinglePayment\\": "src/"
+		}
 	}
 }
