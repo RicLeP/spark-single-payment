@@ -11,12 +11,5 @@
     ],
     "minimum-stability": "dev",
     "require": {
-	},
-	"extra": {
-		"laravel": {
-			"providers": [
-				"RicLeP\\SparkSinglePayment\\SparkSinglePaymentServiceProvider"
-			]
-		}
 	}
 }
