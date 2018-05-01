@@ -15,3 +15,5 @@ $payment = new SparkSinglePayment(Auth::user(), 'A test', 100);
 // Braintree Accepts Charges In Dollars...
 $payment = new SparkSinglePayment(Auth::user(), 'A test', 1);
 ```
+
+Successful charges return the Stripe/Braintree response, failed charges throw an exception.
