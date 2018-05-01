@@ -2,6 +2,7 @@
 
 namespace RicLeP\SparkSinglePayment;
 
+use Exception;
 use Laravel\Cashier\Invoice;
 use Laravel\Spark\Contracts\Repositories\LocalInvoiceRepository;
 use Laravel\Spark\Http\Controllers\Settings\Billing\SendsInvoiceNotifications;
@@ -29,15 +30,16 @@ class SparkSinglePayment
 		$this->amount = $amount;
 		$this->options = $options;
 
-		$this->pay();
+		$this->charge();
 	}
 
 	/**
 	 * Make the payment
 	 *
-	 * @return mixed
+	 * return array
+	 * @throws \Exception
 	 */
-	private function pay()
+	private function charge()
 	{
 		$response = $this->individualOrTeam()->invoiceFor($this->description, $this->amount, $this->options);
 
@@ -50,10 +52,10 @@ class SparkSinglePayment
 
 			$this->sendInvoiceNotification($this->individualOrTeam(), $invoice);
 
-			return true;
+			return $response;
 		}
 
-		return $response;
+		throw new Exception('Provider was unable to perform a charge: '.$response->message);
 	}
 
 	/**
