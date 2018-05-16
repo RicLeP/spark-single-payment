@@ -23,14 +23,9 @@ class SparkSinglePayment
 	 * @param $amount
 	 * @param $description
 	 */
-	public function __construct($user, $description, $amount, $options = [])
+	public function __construct($user)
 	{
 		$this->user = $user;
-		$this->description = $description;
-		$this->amount = $amount;
-		$this->options = $options;
-
-		$this->charge();
 	}
 
 	/**
@@ -39,9 +34,9 @@ class SparkSinglePayment
 	 * return array
 	 * @throws \Exception
 	 */
-	private function charge()
+	public function charge($description, $amount, $options = [])
 	{
-		$response = $this->individualOrTeam()->invoiceFor($this->description, $this->amount, $this->options);
+		$response = $this->individualOrTeam()->invoiceFor($description, $amount, $options);
 
 		if ($response->success) {
 			$invoice = new Invoice($this->individualOrTeam(), $response->transaction);
