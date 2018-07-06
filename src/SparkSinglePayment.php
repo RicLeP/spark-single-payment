@@ -4,6 +4,7 @@ namespace RicLeP\SparkSinglePayment;
 
 use Exception;
 use Laravel\Cashier\Invoice;
+use Laravel\Spark\Spark;
 use Laravel\Spark\Contracts\Repositories\LocalInvoiceRepository;
 use Laravel\Spark\Http\Controllers\Settings\Billing\SendsInvoiceNotifications;
 
@@ -60,7 +61,7 @@ class SparkSinglePayment
 	 */
 	private function individualOrTeam()
 	{
-		if (array_key_exists('Laravel\Spark\CanJoinTeams', class_uses($this->user)) && $this->user->hasTeams()) {
+		if (Spark::usesTeams() && $this->user->hasTeams()) {
 			return $this->user->currentTeam;
 		}
 
