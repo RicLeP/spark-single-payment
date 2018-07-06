@@ -60,7 +60,7 @@ class SparkSinglePayment
 	 */
 	private function individualOrTeam()
 	{
-		if ($this->user->hasTeams()) {
+		if (array_key_exists('Laravel\Spark\CanJoinTeams', class_uses($this->user)) && $this->user->hasTeams()) {
 			return $this->user->currentTeam;
 		}
 

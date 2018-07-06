@@ -3,6 +3,7 @@
     "description": "Take single payments in Laravel Spark such as 'pay-as-you-go' payments",
     "keywords": ["laravel", "spark", "laravel spark", "payments", "stripe", "braintree"],
     "license": "MIT",
+	"type": "library",
     "authors": [
         {
             "name": "Richard Le Poidevin",
