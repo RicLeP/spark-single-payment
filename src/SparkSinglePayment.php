@@ -37,7 +37,11 @@ class SparkSinglePayment
 	 */
 	public function charge($description, $amount, $options = [])
 	{
-		$response = $this->individualOrTeam()->invoiceFor($description, $amount, $options);
+		$defaultOptions = [
+			'recurring' => false,
+		];
+
+		$response = $this->individualOrTeam()->invoiceFor($description, $amount, array_merge($defaultOptions, $options));
 
 		if ($response->success) {
 			$invoice = new Invoice($this->individualOrTeam(), $response->transaction);
